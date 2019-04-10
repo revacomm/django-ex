@@ -1,5 +1,5 @@
 // path of the template to use
-def templatePath = 'https://github.com/revacomm/django-ex/blob/master/openshift/templates/django-postgresql-persistent.json'
+def templatePath = 'https://raw.githubusercontent.com/revacomm/django-ex/master/openshift/templates/django-postgresql-persistent.json'
 // name of the template that will be created
 def templateName = 'django-psql-persistent'
 // NOTE, the "pipeline" directive/closure from the declarative pipeline syntax needs to include, or be nested outside,
