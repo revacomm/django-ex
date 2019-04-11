@@ -20,6 +20,7 @@ pipeline {
         stage('preamble') {
             steps {
                 script {
+                    sh 'pip install pylint'
                     openshift.withCluster() {
                         openshift.withProject() {
                             echo "Using project: ${openshift.project()}"
