@@ -29,7 +29,7 @@ pipeline {
             }
         }
         stage('check_style') {
-            step([
+            steps([
                 $class: 'WarningsPublisher',
                 parserConfigurations: [[parserName: 'PyLint', pattern: 'build/pylint.log']],
             ])          
