@@ -28,13 +28,6 @@ pipeline {
                 }
             }
         }
-        stage('check_style') {
-            steps {
-                sh 'pylint --version'
-                sh 'pylint --disable=W1202 --output-format=parseable --reports=no module > pylint.log || echo "pylint exited with $?"'
-                sh 'cat render/pylint.log'
-            }
-        }
         stage('build') {
             steps {
                 script {
@@ -63,6 +56,13 @@ pipeline {
                 } // script
             } // steps
         } // stage
+        stage('check_style') {
+            steps {
+                sh 'pylint --version'
+                sh 'pylint --disable=W1202 --output-format=parseable --reports=no module > pylint.log || echo "pylint exited with $?"'
+                sh 'cat render/pylint.log'
+            }
+        }
         stage('tag') {
             steps {
                 script {
