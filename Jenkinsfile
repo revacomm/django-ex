@@ -30,7 +30,7 @@ pipeline {
         }
         stage('check_style') {
             steps {
-                sh 'pylint --disable=W1202 --output-format=parseable --reports=no module > pylint.log || echo "pylint exited with $?")'
+                sh 'pylint --disable=W1202 --output-format=parseable --reports=no module > pylint.log || echo "pylint exited with $?"'
                 sh 'cat render/pylint.log'
             }
         }
