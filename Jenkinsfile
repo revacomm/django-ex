@@ -8,8 +8,7 @@ def templateName = 'django-psql-persistent'
 pipeline {
     agent {
       node {
-        // spin up a node.js slave pod to run this build on
-        label 'nodejs'
+        label 'python'
       }
     }
     options {
@@ -20,7 +19,7 @@ pipeline {
         stage('preamble') {
             steps {
                 script {
-                    sh 'pip install pylint'
+                    sh 'pip install -r requirements.txt'
                     openshift.withCluster() {
                         openshift.withProject() {
                             echo "Using project: ${openshift.project()}"
