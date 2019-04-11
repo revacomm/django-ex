@@ -29,10 +29,18 @@ pipeline {
             }
         }
         stage('check_style') {
-            steps([
-                $class: 'WarningsPublisher',
-                parserConfigurations: [[parserName: 'PyLint', pattern: 'build/pylint.log']],
-            ])          
+            sh 'pylint --disable=W1202 --output-format=parseable --reports=no module > pylint.log || echo "pylint exited with $?")'
+            sh 'cat render/pylint.log'
+
+            step([
+                $class                     : 'WarningsPublisher',
+                parserConfigurations       : [[
+                                                parserName: 'PYLint',
+                                                pattern   : 'pylint.log'
+                                            ]],
+                unstableTotalAll           : '0',
+                usePreviousBuildAsReference: true
+            ])   
         }
         stage('build') {
             steps {
