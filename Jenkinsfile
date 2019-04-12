@@ -8,7 +8,7 @@ def templateName = 'django-psql-persistent'
 pipeline {
     agent {
       node {
-        label 'nodejs'
+        label 'python'
       }
     }
     options {
